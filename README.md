@@ -1,3 +1,9 @@
+# Prepare Infrastructure
+To fully use the application, first bring up the infrastructure services using docker-compose.
+
+Compose file is located under `zeebe-infrastructure\operate` folder.
+
+
 # order-service-zeebe project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.

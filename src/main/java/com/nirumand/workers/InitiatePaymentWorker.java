@@ -1,6 +1,7 @@
 package com.nirumand.workers;
 
 import com.nirumand.service.ZeebeClientService;
+import io.quarkus.runtime.Startup;
 import io.zeebe.client.api.response.ActivatedJob;
 import io.zeebe.client.api.worker.JobClient;
 import io.zeebe.client.api.worker.JobHandler;
@@ -13,7 +14,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.time.Duration;
 
-//@Startup
+@Startup
 @ApplicationScoped
 public class InitiatePaymentWorker implements JobHandler {
     private static final Logger LOG = Logger.getLogger(InitiatePaymentWorker.class);
