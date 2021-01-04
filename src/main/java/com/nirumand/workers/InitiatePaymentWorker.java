@@ -1,7 +1,6 @@
 package com.nirumand.workers;
 
-import com.nirumand.orders.ZeebeClientService;
-import io.quarkus.runtime.Startup;
+import com.nirumand.service.ZeebeClientService;
 import io.zeebe.client.api.response.ActivatedJob;
 import io.zeebe.client.api.worker.JobClient;
 import io.zeebe.client.api.worker.JobHandler;

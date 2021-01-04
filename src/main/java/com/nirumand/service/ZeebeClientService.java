@@ -1,4 +1,4 @@
-package com.nirumand.orders;
+package com.nirumand.service;
 
 import io.zeebe.client.ZeebeClient;
 import lombok.Getter;
@@ -21,11 +21,11 @@ public class ZeebeClientService {
         this.client = ZeebeClient.newClientBuilder().gatewayAddress("127.0.0.1:26500").usePlaintext().build();
     }
 
-    public String startInstance(String correlationKey, Object variables) {
+    public String startInstance(Object variables) {
         final var wfInstance = client.newCreateInstanceCommand().bpmnProcessId("order-process").version(3).variables(variables)
                 .requestTimeout(Duration.of(1, SECONDS)).send().join();
 
-        LOG.infof("Process created with following details: processid: {} , version: {}, instanceKey: {}, workflowKey: {}",
+        LOG.infof("Process created with following details: processId: %s , version: %s, instanceKey: %s, workflowKey: %s",
                 wfInstance.getBpmnProcessId(), wfInstance.getVersion(), wfInstance.getWorkflowInstanceKey(), wfInstance.getWorkflowKey());
         return String.valueOf(wfInstance.getWorkflowInstanceKey());
     }
@@ -33,6 +33,6 @@ public class ZeebeClientService {
     public void publishMessage(@NonNull String correlatedId, @NonNull String messageName) {
         final var result = client.newPublishMessageCommand().messageName(messageName).correlationKey(correlatedId).send().join();
 
-        LOG.infof("Message published for order {} with id {}", correlatedId, result.getMessageKey());
+        LOG.infof("Message published for order %s with id %s", correlatedId, result.getMessageKey());
     }
 }

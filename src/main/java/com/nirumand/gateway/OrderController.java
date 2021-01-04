@@ -1,7 +1,9 @@
-package com.nirumand.orders;
+package com.nirumand.gateway;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nirumand.model.Order;
+import com.nirumand.service.ZeebeClientService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -23,6 +25,6 @@ public class OrderController {
 
     @POST
     public String create(Order order) throws JsonProcessingException {
-        return clientService.startInstance(order.getOrderId(), order);
+        return clientService.startInstance(order);
     }
 }

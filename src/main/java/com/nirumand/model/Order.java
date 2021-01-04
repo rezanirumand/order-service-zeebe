@@ -1,4 +1,4 @@
-package com.nirumand.orders;
+package com.nirumand.model;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

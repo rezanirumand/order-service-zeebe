@@ -158,7 +158,6 @@
             </build>
             <properties>
                 <quarkus.package.type>native</quarkus.package.type>
-<!--                <quarkus.native.additional-build-args>&#45;&#45;initialize-at-build-time=io.netty.buffer.UnpooledUnsafeDirectByteBuf</quarkus.native.additional-build-args>-->
             </properties>
         </profile>
     </profiles>

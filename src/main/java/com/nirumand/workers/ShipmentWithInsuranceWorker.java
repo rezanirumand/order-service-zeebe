@@ -1,7 +1,6 @@
 package com.nirumand.workers;
 
-import com.nirumand.orders.ZeebeClientService;
-import io.quarkus.runtime.Startup;
+import com.nirumand.service.ZeebeClientService;
 import io.zeebe.client.api.response.ActivatedJob;
 import io.zeebe.client.api.worker.JobClient;
 import io.zeebe.client.api.worker.JobHandler;
@@ -37,7 +36,7 @@ public class ShipmentWithInsuranceWorker implements JobHandler {
 
     @Override
     public void handle(JobClient client, ActivatedJob job) throws Exception {
-        LOG.infof("Handling ship-insurance  for version workflow Version: {}", job.getWorkflowDefinitionVersion());
+        LOG.infof("Handling ship-insurance for version workflow Version: %s", job.getWorkflowDefinitionVersion());
         client.newCompleteCommand(job.getKey()).send().join();
         LOG.info("ship-insurance shipped");
     }

@@ -1,6 +1,6 @@
-package com.nirumand.payment;
+package com.nirumand.gateway;
 
-import com.nirumand.orders.ZeebeClientService;
+import com.nirumand.service.ZeebeClientService;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
